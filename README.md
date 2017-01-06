@@ -1,2 +1,2 @@
 # ioti-nodejs-sdk
-A nodejs SDK for IBM IoT for insurance service
+A Nodejs client library for developing applications using IBM Watson IoT for insurance service

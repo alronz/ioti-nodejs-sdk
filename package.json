@@ -1,0 +1,35 @@
+{
+  "name": "ibmioti",
+  "version": "0.0.1",
+  "description": "A Nodejs client library for developing applications using IBM Watson IoT for insurance service",
+  "main": "dist/ioti-client.js",
+  "dependencies": {
+
+  },
+  "devDependencies": {
+    "chai": "^3.2.0",
+    "mocha": "^2.2.5",
+    "sinon": "^1.16.1",
+    "browserify": "^11.0.1",
+    "uglify-js": "latest",
+    "rimraf": "latest"
+  },
+  "scripts": {
+    "clean": "rimraf dist/*",
+    "build:bundle": "browserify src/ioti-client.js -s IBMIoTI --outfile dist/ioti-client-bundle.js",
+    "build:min": "browserify src/ioti-client.js -s IBMIoTF | uglifyjs > dist/ioti-client-bundle.min.js",
+    "build": "npm run clean && npm run build:bundle && npm run build:min",
+    "prepublish": "npm run build",
+    "test": "mocha"
+  },
+  "author": {
+    "name": "Bilal Al-Saeedi",
+    "email": "bilal.alsaeedi@de.ibm.com"
+  },
+  "contributors": [],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alronz/ioti-nodejs-sdk.git"
+  },
+  "license": ""
+}
