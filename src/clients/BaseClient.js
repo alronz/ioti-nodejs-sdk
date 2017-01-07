@@ -1,39 +1,46 @@
-/**
- * Copyright 2017 IBM Corp. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-
-
 "use strict";
+var helper = '../utils/helper';
 
+function BaseClient(configs) {
 
-function BaseClient()
-{
-    if (!(this instanceof BaseService)) {
-        // it might be better to just create a new instance and return that.. but that can't be done here, it has to be done in each individual service. So this is still a good failsafe even in that case.
-        throw new Error('"new" keyword required to create Watson service instances');
-    }
-    var options = extend({}, user_options);
+  if (!(this instanceof BaseClient)) {
+    throw new Error('"new" keyword required to create IoTI instances');
+  }
 
-    options = this.initCredentials(options);
+  if (!helper.isDefined(configs)) {
+    throw new Error('[BaseClient:constructor] configs are missing');
+  }
+  if (!helper.isDefined(configs.userid)) {
+    throw new Error('[BaseClient:constructor] configs must contain userid');
+  }
+  if (!helper.isDefined(configs.password)) {
+    throw new Error('[BaseClient:constructor] configs must contain password');
+  }
+  if (!helper.isDefined(configs.uri)) {
+    throw new Error('[BaseClient:constructor] configs must contain uri');
+  }
 
-    if (options.url)
-        options.url = helper.stripTrailingSlash(options.url);
+  this.user = configs.userid;
+  this.pass = configs.password;
+  this.baseUrl = configs.uri;
 
-    this._options = extend({qs: {}, url: this.constructor.URL}, this.serviceDefaults, options);
 }
+
+
+BaseClient.prototype.getConfigs = function () {
+  return {
+    user: this.user,
+    pass: this.pass,
+    baseUrl: this.baseUrl
+  }
+};
+
+BaseClient.prototype.getCredentials = function () {
+  return {
+    user: this.user,
+    pass: this.pass
+  }
+};
 
 
 module.exports = BaseClient;
