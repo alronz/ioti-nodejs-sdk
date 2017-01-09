@@ -19089,7 +19089,7 @@ module.exports={
         "spec": ">=6.0.0 <7.0.0",
         "type": "range"
       },
-      "/Users/bilal-saeedi/ioti-nodejs-sdk/node_modules/browserify-sign"
+      "/Users/alronz/ioti-nodejs-sdk/node_modules/browserify-sign"
     ]
   ],
   "_from": "elliptic@>=6.0.0 <7.0.0",
@@ -19125,7 +19125,7 @@ module.exports={
   "_shasum": "e4c81e0829cf0a65ab70e998b8232723b5c1bc48",
   "_shrinkwrap": null,
   "_spec": "elliptic@^6.0.0",
-  "_where": "/Users/bilal-saeedi/ioti-nodejs-sdk/node_modules/browserify-sign",
+  "_where": "/Users/alronz/ioti-nodejs-sdk/node_modules/browserify-sign",
   "author": {
     "name": "Fedor Indutny",
     "email": "fedor@indutny.com"
@@ -57724,7 +57724,7 @@ module.exports={
         "spec": ">=2.3.0 <2.4.0",
         "type": "range"
       },
-      "/Users/bilal-saeedi/ioti-nodejs-sdk/node_modules/request"
+      "/Users/alronz/ioti-nodejs-sdk/node_modules/request"
     ]
   ],
   "_from": "tough-cookie@>=2.3.0 <2.4.0",
@@ -57759,7 +57759,7 @@ module.exports={
   "_shasum": "f081f76e4c85720e6c37a5faced737150d84072a",
   "_shrinkwrap": null,
   "_spec": "tough-cookie@~2.3.0",
-  "_where": "/Users/bilal-saeedi/ioti-nodejs-sdk/node_modules/request",
+  "_where": "/Users/alronz/ioti-nodejs-sdk/node_modules/request",
   "author": {
     "name": "Jeremy Stashewsky",
     "email": "jstashewsky@salesforce.com"
@@ -64719,7 +64719,7 @@ function extend() {
 
 },{}],315:[function(require,module,exports){
 "use strict";
-var helper = '../utils/helper';
+var helper = require('../utils/helper');
 
 function BaseClient(configs) {
 
@@ -64765,12 +64765,12 @@ BaseClient.prototype.getCredentials = function () {
 
 module.exports = BaseClient;
 
-},{}],316:[function(require,module,exports){
+},{"../utils/helper":326}],316:[function(require,module,exports){
 "use strict";
 var util = require('util');
 var BaseClient = require('./BaseClient');
 var requestFactory = require('../utils/requestWrapper');
-var helper = '../utils/helper';
+var helper = require('../utils/helper');
 
 function DeviceClient(configs) {
   BaseClient.call(this, configs);
@@ -64955,7 +64955,7 @@ DeviceClient.prototype.updateDevice = function (deviceId, newDevice, callback) {
   if (!helper.isDefined(deviceId)) {
     return new Error('[DeviceClient:updateDevice] Missing parameters:', 'deviceId');
   }
-  
+
   if (!helper.isDefined(newDevice)) {
     return new Error('[DeviceClient:updateDevice] Missing parameters:', 'newDevice');
   }
@@ -64974,12 +64974,16 @@ DeviceClient.prototype.updateDevice = function (deviceId, newDevice, callback) {
   return requestFactory(parameters, callback);
 };
 
-},{"../utils/requestWrapper":326,"./BaseClient":315,"util":288}],317:[function(require,module,exports){
+
+
+module.exports = DeviceClient;
+
+},{"../utils/helper":326,"../utils/requestWrapper":327,"./BaseClient":315,"util":288}],317:[function(require,module,exports){
 "use strict";
 var util = require('util');
 var BaseClient = require('./BaseClient');
 var requestFactory = require('../utils/requestWrapper');
-var helper = '../utils/helper';
+var helper = require('../utils/helper');
 
 function GlobalClient(configs) {
   BaseClient.call(this, configs);
@@ -65050,12 +65054,15 @@ GlobalClient.prototype.sendPushNotification = function (pushNotification, callba
   return requestFactory(parameters, callback);
 };
 
-},{"../utils/requestWrapper":326,"./BaseClient":315,"util":288}],318:[function(require,module,exports){
+
+module.exports = GlobalClient;
+
+},{"../utils/helper":326,"../utils/requestWrapper":327,"./BaseClient":315,"util":288}],318:[function(require,module,exports){
 "use strict";
 var util = require('util');
 var BaseClient = require('./BaseClient');
 var requestFactory = require('../utils/requestWrapper');
-var helper = '../utils/helper';
+var helper = require('../utils/helper');
 
 function HazardEventClient(configs) {
   BaseClient.call(this, configs);
@@ -65299,12 +65306,15 @@ HazardEventClient.prototype.updateHEventValidationType = function (hazardEventId
   return requestFactory(parameters, callback);
 };
 
-},{"../utils/requestWrapper":326,"./BaseClient":315,"util":288}],319:[function(require,module,exports){
+
+module.exports = HazardEventClient;
+
+},{"../utils/helper":326,"../utils/requestWrapper":327,"./BaseClient":315,"util":288}],319:[function(require,module,exports){
 "use strict";
 var util = require('util');
 var BaseClient = require('./BaseClient');
 var requestFactory = require('../utils/requestWrapper');
-var helper = '../utils/helper';
+var helper = require('../utils/helper');
 
 function JSCodeClient(configs) {
   BaseClient.call(this, configs);
@@ -65455,12 +65465,15 @@ JSCodeClient.prototype.updateJSCode = function (jsCodeId, code, callback) {
   return requestFactory(parameters, callback);
 };
 
-},{"../utils/requestWrapper":326,"./BaseClient":315,"util":288}],320:[function(require,module,exports){
+
+module.exports = JSCodeClient;
+
+},{"../utils/helper":326,"../utils/requestWrapper":327,"./BaseClient":315,"util":288}],320:[function(require,module,exports){
 "use strict";
 var util = require('util');
 var BaseClient = require('./BaseClient');
 var requestFactory = require('../utils/requestWrapper');
-var helper = '../utils/helper';
+var helper = require('../utils/helper');
 
 function PromotionClient(configs) {
   BaseClient.call(this, configs);
@@ -65602,12 +65615,15 @@ PromotionClient.prototype.getAllPromotions = function (callback) {
   return requestFactory(parameters, callback);
 };
 
-},{"../utils/requestWrapper":326,"./BaseClient":315,"util":288}],321:[function(require,module,exports){
+
+module.exports = PromotionClient;
+
+},{"../utils/helper":326,"../utils/requestWrapper":327,"./BaseClient":315,"util":288}],321:[function(require,module,exports){
 "use strict";
 var util = require('util');
 var BaseClient = require('./BaseClient');
 var requestFactory = require('../utils/requestWrapper');
-var helper = '../utils/helper';
+var helper = require('../utils/helper');
 
 function RegistrationClient(configs) {
   BaseClient.call(this, configs);
@@ -65741,12 +65757,15 @@ RegistrationClient.prototype.updateRegistrationDevice = function (deviceId, newD
   return requestFactory(parameters, callback);
 };
 
-},{"../utils/requestWrapper":326,"./BaseClient":315,"util":288}],322:[function(require,module,exports){
+
+module.exports = RegistrationClient;
+
+},{"../utils/helper":326,"../utils/requestWrapper":327,"./BaseClient":315,"util":288}],322:[function(require,module,exports){
 "use strict";
 var util = require('util');
 var BaseClient = require('./BaseClient');
 var requestFactory = require('../utils/requestWrapper');
-var helper = '../utils/helper';
+var helper = require('../utils/helper');
 
 function ShieldAssociationClient(configs) {
   BaseClient.call(this, configs);
@@ -65962,12 +65981,15 @@ ShieldAssociationClient.prototype.setShieldAssociationOnCloud = function (shield
   return requestFactory(parameters, callback);
 };
 
-},{"../utils/requestWrapper":326,"./BaseClient":315,"util":288}],323:[function(require,module,exports){
+
+module.exports = ShieldAssociationClient;
+
+},{"../utils/helper":326,"../utils/requestWrapper":327,"./BaseClient":315,"util":288}],323:[function(require,module,exports){
 "use strict";
 var util = require('util');
 var BaseClient = require('./BaseClient');
 var requestFactory = require('../utils/requestWrapper');
-var helper = '../utils/helper';
+var helper = require('../utils/helper');
 
 function ShieldClient(configs) {
   BaseClient.call(this, configs);
@@ -66165,12 +66187,15 @@ ShieldClient.prototype.getAllShields = function (callback) {
   return requestFactory(parameters, callback);
 };
 
-},{"../utils/requestWrapper":326,"./BaseClient":315,"util":288}],324:[function(require,module,exports){
+
+module.exports = ShieldClient;
+
+},{"../utils/helper":326,"../utils/requestWrapper":327,"./BaseClient":315,"util":288}],324:[function(require,module,exports){
 "use strict";
 var util = require('util');
 var BaseClient = require('./BaseClient');
 var requestFactory = require('../utils/requestWrapper');
-var helper = '../utils/helper';
+var helper = require('../utils/helper');
 
 function UserClient(configs) {
   BaseClient.call(this, configs);
@@ -66426,7 +66451,10 @@ UserClient.prototype.updateUserDevice = function (userName, deviceId, callback) 
   return requestFactory(parameters, callback);
 };
 
-},{"../utils/requestWrapper":326,"./BaseClient":315,"util":288}],325:[function(require,module,exports){
+
+module.exports = UserClient;
+
+},{"../utils/helper":326,"../utils/requestWrapper":327,"./BaseClient":315,"util":288}],325:[function(require,module,exports){
 "use strict";
 
 
@@ -66454,9 +66482,41 @@ module.exports = {
 };
 
 },{"./clients/DeviceClient":316,"./clients/GlobalClient":317,"./clients/HazardEventClient":318,"./clients/JSCodeClient":319,"./clients/PromotionClient":320,"./clients/RegistrationClient":321,"./clients/ShieldAssociationClient":322,"./clients/ShieldClient":323,"./clients/UserClient":324}],326:[function(require,module,exports){
+"use strict";
+
+module.exports =
+{
+
+  isDefined: function(variable) {
+    return ((typeof variable !== 'undefined') && (variable !== null) );
+  },
+
+  getMissingParams: function(params, requires) {
+
+    var missing;
+
+    if (!requires) {
+      return null;
+    } else if (!params) {
+      missing = requires;
+    } else {
+      missing = [];
+
+      requires.forEach(function(require) {
+        if (!params[require])
+          missing.push(require);
+      });
+    }
+
+    return missing.length > 0 ? missing.join(', ') : null;
+  }
+
+};
+
+},{}],327:[function(require,module,exports){
 var request = require("request");
 var when = require('when');
-var helper = '../utils/helper';
+var helper = require('../utils/helper');
 
 
 var getCSRFToken = function (configs) {
@@ -66534,6 +66594,7 @@ function createRequest(parameters, callback) {
   if (parameters.withCSRF) {
     getCSRFToken(parameters.configs).then(function (csrf) {
       parameters.options.jar = csrf.cookieJar;
+      parameters.options.headers = {};
       parameters.options.headers['X-CSRF-Token'] = csrf.csrfToken;
 
       request(parameters.options, formatErrorIfExists(callback));
@@ -66545,5 +66606,5 @@ function createRequest(parameters, callback) {
 
 module.exports = createRequest;
 
-},{"request":223,"when":313}]},{},[325])(325)
+},{"../utils/helper":326,"request":223,"when":313}]},{},[325])(325)
 });
