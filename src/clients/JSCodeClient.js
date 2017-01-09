@@ -2,7 +2,7 @@
 var util = require('util');
 var BaseClient = require('./BaseClient');
 var requestFactory = require('../utils/requestWrapper');
-var helper = '../utils/helper';
+var helper = require('../utils/helper');
 
 function JSCodeClient(configs) {
   BaseClient.call(this, configs);
@@ -152,3 +152,6 @@ JSCodeClient.prototype.updateJSCode = function (jsCodeId, code, callback) {
 
   return requestFactory(parameters, callback);
 };
+
+
+module.exports = JSCodeClient;

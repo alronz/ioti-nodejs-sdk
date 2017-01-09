@@ -2,7 +2,7 @@
 var util = require('util');
 var BaseClient = require('./BaseClient');
 var requestFactory = require('../utils/requestWrapper');
-var helper = '../utils/helper';
+var helper = require('../utils/helper');
 
 function ShieldClient(configs) {
   BaseClient.call(this, configs);
@@ -199,3 +199,6 @@ ShieldClient.prototype.getAllShields = function (callback) {
 
   return requestFactory(parameters, callback);
 };
+
+
+module.exports = ShieldClient;

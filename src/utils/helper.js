@@ -1,14 +1,13 @@
 "use strict";
 
-
 module.exports =
 {
 
-  isDefined: function (variable) {
-    return (typeof variable !== 'undefined');
+  isDefined: function(variable) {
+    return ((typeof variable !== 'undefined') && (variable !== null) );
   },
 
-  getMissingParams: function (params, requires) {
+  getMissingParams: function(params, requires) {
 
     var missing;
 
@@ -19,13 +18,13 @@ module.exports =
     } else {
       missing = [];
 
-      requires.forEach(function (require) {
+      requires.forEach(function(require) {
         if (!params[require])
           missing.push(require);
       });
     }
 
-    return missing.length > 0 ? new Error('Missing required parameters: ' + missing.join(', ')) : null;
+    return missing.length > 0 ? missing.join(', ') : null;
   }
 
 };

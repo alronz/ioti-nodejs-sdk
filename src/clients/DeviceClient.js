@@ -2,7 +2,7 @@
 var util = require('util');
 var BaseClient = require('./BaseClient');
 var requestFactory = require('../utils/requestWrapper');
-var helper = '../utils/helper';
+var helper = require('../utils/helper');
 
 function DeviceClient(configs) {
   BaseClient.call(this, configs);
@@ -187,7 +187,7 @@ DeviceClient.prototype.updateDevice = function (deviceId, newDevice, callback) {
   if (!helper.isDefined(deviceId)) {
     return new Error('[DeviceClient:updateDevice] Missing parameters:', 'deviceId');
   }
-  
+
   if (!helper.isDefined(newDevice)) {
     return new Error('[DeviceClient:updateDevice] Missing parameters:', 'newDevice');
   }
@@ -205,3 +205,7 @@ DeviceClient.prototype.updateDevice = function (deviceId, newDevice, callback) {
 
   return requestFactory(parameters, callback);
 };
+
+
+
+module.exports = DeviceClient;

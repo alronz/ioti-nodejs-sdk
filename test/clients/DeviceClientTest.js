@@ -1,14 +1,15 @@
 "use strict";
 
-describe('Device Client', function () {
+describe('Device Client', function() {
 
   var nock = require('nock');
   var should = require('chai').should();
-  var IotIClient = require('../src/ioti-client');
+  var IotIClient = require('../../src/ioti-client');
+  var baseUrl = "https://iot4insurance-api.eu-gb.mybluemix.net";
 
   var configs =
   {
-    uri: "testuri",
+    uri: baseUrl,
     userid: "testuserid",
     password: "testpassword"
   };
@@ -26,33 +27,53 @@ describe('Device Client', function () {
     "status": "status"
   };
 
+  before(function() {
 
-  before(function () {
-    nock.disableNetConnect();
+    nock(baseUrl)
+    .get('/device/testDeviceID')
+    .reply(200, {"data": "value"});
 
-    nock(configs.uri + '/device')
-      .persist()
-      .post(testDevice)
-      .reply(200, {});
-
-    nock(configs.uri + '/device/' + id)
-      .persist()
-      .get()
-      .reply(200, {});
+    nock(baseUrl)
+    .post('/device', testDevice)
+    .reply(200, {"data": "value"});
 
   });
 
-  after(function () {
+  after(function() {
     nock.cleanAll();
   });
 
-
-  describe('Create Device', function () {
-    it('should check no parameters provided', function () {
-
+  describe('createDevice()', function() {
+    it('should check no parameters provided', function() {
+      var result = iotIDevice.createDevice(null, function(error, body, response) {
+      });
+      result.should.be.a('error');
     });
-    it('should create device successfully', function () {
 
+    it('should create device successfully', function(done) {
+      iotIDevice.createDevice(testDevice, function(error, body, response) {
+        should.not.exist(error);
+        should.exist(body);
+        should.exist(response);
+        done();
+      });
+    });
+  });
+
+  describe('getDevicesPerId()', function() {
+    it('should check no parameters provided', function() {
+      var result = iotIDevice.getDevicesPerId(null, function(error, body, response) {
+      });
+      result.should.be.a('error');
+    });
+
+    it('should create device successfully', function(done) {
+      iotIDevice.getDevicesPerId('testDeviceID', function(error, body, response) {
+        should.not.exist(error);
+        should.exist(body);
+        should.exist(response);
+        done();
+      });
     });
   });
 });

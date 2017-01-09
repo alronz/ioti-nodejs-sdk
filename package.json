@@ -4,6 +4,7 @@
   "description": "A Nodejs client library for developing applications using IBM Watson IoT for insurance service",
   "main": "dist/ioti-client.js",
   "dependencies": {
+    "nock": "^9.0.2",
     "request": "^2.79.0",
     "when": "^3.7.7"
   },

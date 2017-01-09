@@ -2,7 +2,7 @@
 var util = require('util');
 var BaseClient = require('./BaseClient');
 var requestFactory = require('../utils/requestWrapper');
-var helper = '../utils/helper';
+var helper = require('../utils/helper');
 
 function ShieldAssociationClient(configs) {
   BaseClient.call(this, configs);
@@ -217,3 +217,6 @@ ShieldAssociationClient.prototype.setShieldAssociationOnCloud = function (shield
 
   return requestFactory(parameters, callback);
 };
+
+
+module.exports = ShieldAssociationClient;

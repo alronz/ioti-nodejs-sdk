@@ -2,7 +2,7 @@
 var util = require('util');
 var BaseClient = require('./BaseClient');
 var requestFactory = require('../utils/requestWrapper');
-var helper = '../utils/helper';
+var helper = require('../utils/helper');
 
 function HazardEventClient(configs) {
   BaseClient.call(this, configs);
@@ -245,3 +245,6 @@ HazardEventClient.prototype.updateHEventValidationType = function (hazardEventId
 
   return requestFactory(parameters, callback);
 };
+
+
+module.exports = HazardEventClient;

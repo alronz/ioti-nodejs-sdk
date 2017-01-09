@@ -1,5 +1,5 @@
 "use strict";
-var helper = '../utils/helper';
+var helper = require('../utils/helper');
 
 function BaseClient(configs) {
 

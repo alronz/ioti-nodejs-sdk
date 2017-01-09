@@ -2,7 +2,7 @@
 var util = require('util');
 var BaseClient = require('./BaseClient');
 var requestFactory = require('../utils/requestWrapper');
-var helper = '../utils/helper';
+var helper = require('../utils/helper');
 
 function GlobalClient(configs) {
   BaseClient.call(this, configs);
@@ -72,3 +72,6 @@ GlobalClient.prototype.sendPushNotification = function (pushNotification, callba
 
   return requestFactory(parameters, callback);
 };
+
+
+module.exports = GlobalClient;

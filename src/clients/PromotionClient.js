@@ -2,7 +2,7 @@
 var util = require('util');
 var BaseClient = require('./BaseClient');
 var requestFactory = require('../utils/requestWrapper');
-var helper = '../utils/helper';
+var helper = require('../utils/helper');
 
 function PromotionClient(configs) {
   BaseClient.call(this, configs);
@@ -143,3 +143,6 @@ PromotionClient.prototype.getAllPromotions = function (callback) {
 
   return requestFactory(parameters, callback);
 };
+
+
+module.exports = PromotionClient;

@@ -2,7 +2,7 @@
 var util = require('util');
 var BaseClient = require('./BaseClient');
 var requestFactory = require('../utils/requestWrapper');
-var helper = '../utils/helper';
+var helper = require('../utils/helper');
 
 function RegistrationClient(configs) {
   BaseClient.call(this, configs);
@@ -135,3 +135,6 @@ RegistrationClient.prototype.updateRegistrationDevice = function (deviceId, newD
 
   return requestFactory(parameters, callback);
 };
+
+
+module.exports = RegistrationClient;

@@ -1,6 +1,6 @@
 var request = require("request");
 var when = require('when');
-var helper = '../utils/helper';
+var helper = require('../utils/helper');
 
 
 var getCSRFToken = function (configs) {
@@ -78,6 +78,7 @@ function createRequest(parameters, callback) {
   if (parameters.withCSRF) {
     getCSRFToken(parameters.configs).then(function (csrf) {
       parameters.options.jar = csrf.cookieJar;
+      parameters.options.headers = {};
       parameters.options.headers['X-CSRF-Token'] = csrf.csrfToken;
 
       request(parameters.options, formatErrorIfExists(callback));
