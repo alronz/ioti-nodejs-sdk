@@ -94,7 +94,7 @@ RegistrationClient.prototype.getRegistrationsPerProvider = function (provider, c
 // Removes the device token from the system.
 RegistrationClient.prototype.deleteRegistrationPerDeviceId = function (deviceId, callback) {
 
-  if (!helper.isDefined(registrationId)) {
+  if (!helper.isDefined(deviceId)) {
     return new Error('[RegistrationClient:deleteRegistrationPerDeviceId] Missing parameters:', 'deviceId');
   }
 
