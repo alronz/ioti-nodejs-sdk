@@ -19089,7 +19089,7 @@ module.exports={
         "spec": ">=6.0.0 <7.0.0",
         "type": "range"
       },
-      "/Users/alronz/ioti-nodejs-sdk/node_modules/browserify-sign"
+      "/Users/bilal-saeedi/ioti-nodejs-sdk/node_modules/browserify-sign"
     ]
   ],
   "_from": "elliptic@>=6.0.0 <7.0.0",
@@ -19125,7 +19125,7 @@ module.exports={
   "_shasum": "e4c81e0829cf0a65ab70e998b8232723b5c1bc48",
   "_shrinkwrap": null,
   "_spec": "elliptic@^6.0.0",
-  "_where": "/Users/alronz/ioti-nodejs-sdk/node_modules/browserify-sign",
+  "_where": "/Users/bilal-saeedi/ioti-nodejs-sdk/node_modules/browserify-sign",
   "author": {
     "name": "Fedor Indutny",
     "email": "fedor@indutny.com"
@@ -57724,7 +57724,7 @@ module.exports={
         "spec": ">=2.3.0 <2.4.0",
         "type": "range"
       },
-      "/Users/alronz/ioti-nodejs-sdk/node_modules/request"
+      "/Users/bilal-saeedi/ioti-nodejs-sdk/node_modules/request"
     ]
   ],
   "_from": "tough-cookie@>=2.3.0 <2.4.0",
@@ -57759,7 +57759,7 @@ module.exports={
   "_shasum": "f081f76e4c85720e6c37a5faced737150d84072a",
   "_shrinkwrap": null,
   "_spec": "tough-cookie@~2.3.0",
-  "_where": "/Users/alronz/ioti-nodejs-sdk/node_modules/request",
+  "_where": "/Users/bilal-saeedi/ioti-nodejs-sdk/node_modules/request",
   "author": {
     "name": "Jeremy Stashewsky",
     "email": "jstashewsky@salesforce.com"
@@ -65715,7 +65715,7 @@ RegistrationClient.prototype.getRegistrationsPerProvider = function (provider, c
 // Removes the device token from the system.
 RegistrationClient.prototype.deleteRegistrationPerDeviceId = function (deviceId, callback) {
 
-  if (!helper.isDefined(registrationId)) {
+  if (!helper.isDefined(deviceId)) {
     return new Error('[RegistrationClient:deleteRegistrationPerDeviceId] Missing parameters:', 'deviceId');
   }
 
