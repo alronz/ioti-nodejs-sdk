@@ -22,12 +22,11 @@ function BaseClient(configs) {
 
   this.user = configs.userid;
   this.pass = configs.password;
-  this.baseUrl = configs.uri;
+  this.baseUrl = configs.uri.replace(/\/$/, "");
 
 }
 
-
-BaseClient.prototype.getConfigs = function () {
+BaseClient.prototype.getConfigs = function() {
   return {
     user: this.user,
     pass: this.pass,
@@ -35,12 +34,11 @@ BaseClient.prototype.getConfigs = function () {
   }
 };
 
-BaseClient.prototype.getCredentials = function () {
+BaseClient.prototype.getCredentials = function() {
   return {
     user: this.user,
     pass: this.pass
   }
 };
-
 
 module.exports = BaseClient;

@@ -35,7 +35,7 @@
 
     this.user = configs.userid;
     this.pass = configs.password;
-    this.baseUrl = configs.uri;
+    this.baseUrl = configs.uri.replace(/\/$/, "");
   }
 
   BaseClient.prototype.getConfigs = function () {
