@@ -64743,25 +64743,22 @@ function BaseClient(configs) {
   this.user = configs.userid;
   this.pass = configs.password;
   this.baseUrl = configs.uri;
-
 }
-
 
 BaseClient.prototype.getConfigs = function () {
   return {
     user: this.user,
     pass: this.pass,
     baseUrl: this.baseUrl
-  }
+  };
 };
 
 BaseClient.prototype.getCredentials = function () {
   return {
     user: this.user,
     pass: this.pass
-  }
+  };
 };
-
 
 module.exports = BaseClient;
 
@@ -64778,7 +64775,7 @@ function DeviceClient(configs) {
   this.configs = {
     credentials: this.getCredentials(),
     baseUrl: this.baseUrl
-  }
+  };
 }
 util.inherits(DeviceClient, BaseClient);
 
@@ -64911,7 +64908,6 @@ DeviceClient.prototype.setDeviceAttribute = function (deviceId, attributeName, a
   return requestFactory(parameters, callback);
 };
 
-
 // Returns information for all the devices registered in the system. Admin access required.
 DeviceClient.prototype.getAllDevices = function (callback) {
 
@@ -64927,7 +64923,6 @@ DeviceClient.prototype.getAllDevices = function (callback) {
 
   return requestFactory(parameters, callback);
 };
-
 
 // Returns information on all the devices registered for the specified user. Admin access required.
 DeviceClient.prototype.getDevicesPerUser = function (username, callback) {
@@ -64974,8 +64969,6 @@ DeviceClient.prototype.updateDevice = function (deviceId, newDevice, callback) {
   return requestFactory(parameters, callback);
 };
 
-
-
 module.exports = DeviceClient;
 
 },{"../utils/helper":326,"../utils/requestWrapper":327,"./BaseClient":315,"util":288}],317:[function(require,module,exports){
@@ -64991,7 +64984,7 @@ function GlobalClient(configs) {
   this.configs = {
     credentials: this.getCredentials(),
     baseUrl: this.baseUrl
-  }
+  };
 }
 util.inherits(GlobalClient, BaseClient);
 
@@ -65032,7 +65025,6 @@ GlobalClient.prototype.sendPayloadToMQTT = function (outputType, deviceType, dev
   return requestFactory(parameters, callback);
 };
 
-
 // Sends a push notification to the phone described in the body parameter. Admin access required.
 GlobalClient.prototype.sendPushNotification = function (pushNotification, callback) {
 
@@ -65054,7 +65046,6 @@ GlobalClient.prototype.sendPushNotification = function (pushNotification, callba
   return requestFactory(parameters, callback);
 };
 
-
 module.exports = GlobalClient;
 
 },{"../utils/helper":326,"../utils/requestWrapper":327,"./BaseClient":315,"util":288}],318:[function(require,module,exports){
@@ -65070,7 +65061,7 @@ function HazardEventClient(configs) {
   this.configs = {
     credentials: this.getCredentials(),
     baseUrl: this.baseUrl
-  }
+  };
 }
 util.inherits(HazardEventClient, BaseClient);
 
@@ -65243,7 +65234,6 @@ HazardEventClient.prototype.setHEventAttribute = function (hazardEventId, attrib
   return requestFactory(parameters, callback);
 };
 
-
 // Returns all hazard events. Admin access required.
 HazardEventClient.prototype.getAllHEvents = function (callback) {
 
@@ -65259,7 +65249,6 @@ HazardEventClient.prototype.getAllHEvents = function (callback) {
 
   return requestFactory(parameters, callback);
 };
-
 
 // Returns the aggregated hazard events over time.
 HazardEventClient.prototype.getHEventsAggregated = function (queryParams, callback) {
@@ -65306,7 +65295,6 @@ HazardEventClient.prototype.updateHEventValidationType = function (hazardEventId
   return requestFactory(parameters, callback);
 };
 
-
 module.exports = HazardEventClient;
 
 },{"../utils/helper":326,"../utils/requestWrapper":327,"./BaseClient":315,"util":288}],319:[function(require,module,exports){
@@ -65322,7 +65310,7 @@ function JSCodeClient(configs) {
   this.configs = {
     credentials: this.getCredentials(),
     baseUrl: this.baseUrl
-  }
+  };
 }
 util.inherits(JSCodeClient, BaseClient);
 
@@ -65384,7 +65372,6 @@ JSCodeClient.prototype.getJSCodesPerShieldUUUID = function (shieldUUUID, queryPa
   return requestFactory(parameters, callback);
 };
 
-
 // Returns all the common Java Script code from the database. This code consists of helper functions and utilities that can be used when writing shields. Admin access required.
 JSCodeClient.prototype.getCommonJSCodes = function (queryParams, callback) {
 
@@ -65418,7 +65405,6 @@ JSCodeClient.prototype.getAllJSCodes = function (queryParams, callback) {
 
   return requestFactory(parameters, callback);
 };
-
 
 // Returns the Java Script code for all the shields associated with the specified user. Dashboard access level required.
 JSCodeClient.prototype.getJSCodesPerUser = function (username, queryParams, callback) {
@@ -65465,7 +65451,6 @@ JSCodeClient.prototype.updateJSCode = function (jsCodeId, code, callback) {
   return requestFactory(parameters, callback);
 };
 
-
 module.exports = JSCodeClient;
 
 },{"../utils/helper":326,"../utils/requestWrapper":327,"./BaseClient":315,"util":288}],320:[function(require,module,exports){
@@ -65481,7 +65466,7 @@ function PromotionClient(configs) {
   this.configs = {
     credentials: this.getCredentials(),
     baseUrl: this.baseUrl
-  }
+  };
 }
 util.inherits(PromotionClient, BaseClient);
 
@@ -65598,7 +65583,6 @@ PromotionClient.prototype.setPromotionAttribute = function (promotionId, attribu
   return requestFactory(parameters, callback);
 };
 
-
 // Returns all the promotions in the system. Dashboard access level required.
 PromotionClient.prototype.getAllPromotions = function (callback) {
 
@@ -65615,7 +65599,6 @@ PromotionClient.prototype.getAllPromotions = function (callback) {
   return requestFactory(parameters, callback);
 };
 
-
 module.exports = PromotionClient;
 
 },{"../utils/helper":326,"../utils/requestWrapper":327,"./BaseClient":315,"util":288}],321:[function(require,module,exports){
@@ -65631,7 +65614,7 @@ function RegistrationClient(configs) {
   this.configs = {
     credentials: this.getCredentials(),
     baseUrl: this.baseUrl
-  }
+  };
 }
 util.inherits(RegistrationClient, BaseClient);
 
@@ -65757,7 +65740,6 @@ RegistrationClient.prototype.updateRegistrationDevice = function (deviceId, newD
   return requestFactory(parameters, callback);
 };
 
-
 module.exports = RegistrationClient;
 
 },{"../utils/helper":326,"../utils/requestWrapper":327,"./BaseClient":315,"util":288}],322:[function(require,module,exports){
@@ -65773,7 +65755,7 @@ function ShieldAssociationClient(configs) {
   this.configs = {
     credentials: this.getCredentials(),
     baseUrl: this.baseUrl
-  }
+  };
 }
 util.inherits(ShieldAssociationClient, BaseClient);
 
@@ -65922,7 +65904,6 @@ ShieldAssociationClient.prototype.setShieldAssociationAttribute = function (shie
   return requestFactory(parameters, callback);
 };
 
-
 // Returns all shield associations. Admin access required.
 ShieldAssociationClient.prototype.getAllShieldAssociations = function (callback) {
 
@@ -65938,7 +65919,6 @@ ShieldAssociationClient.prototype.getAllShieldAssociations = function (callback)
 
   return requestFactory(parameters, callback);
 };
-
 
 // Returns the shields associations for the user with the specified username. Dashboard access level required.
 ShieldAssociationClient.prototype.getShieldAssociationsPerUser = function (username, callback) {
@@ -65981,7 +65961,6 @@ ShieldAssociationClient.prototype.setShieldAssociationOnCloud = function (shield
   return requestFactory(parameters, callback);
 };
 
-
 module.exports = ShieldAssociationClient;
 
 },{"../utils/helper":326,"../utils/requestWrapper":327,"./BaseClient":315,"util":288}],323:[function(require,module,exports){
@@ -65997,7 +65976,7 @@ function ShieldClient(configs) {
   this.configs = {
     credentials: this.getCredentials(),
     baseUrl: this.baseUrl
-  }
+  };
 }
 util.inherits(ShieldClient, BaseClient);
 
@@ -66170,7 +66149,6 @@ ShieldClient.prototype.setShieldAttribute = function (shieldId, attributeName, a
   return requestFactory(parameters, callback);
 };
 
-
 // Returns all the shields in the system. Dashboard access level required.
 ShieldClient.prototype.getAllShields = function (callback) {
 
@@ -66187,7 +66165,6 @@ ShieldClient.prototype.getAllShields = function (callback) {
   return requestFactory(parameters, callback);
 };
 
-
 module.exports = ShieldClient;
 
 },{"../utils/helper":326,"../utils/requestWrapper":327,"./BaseClient":315,"util":288}],324:[function(require,module,exports){
@@ -66203,7 +66180,7 @@ function UserClient(configs) {
   this.configs = {
     credentials: this.getCredentials(),
     baseUrl: this.baseUrl
-  }
+  };
 }
 util.inherits(UserClient, BaseClient);
 
@@ -66372,7 +66349,6 @@ UserClient.prototype.setUserAccessLevel = function (userName, accessLevel, callb
   return requestFactory(parameters, callback);
 };
 
-
 // Returns all the users in the system. Admin access required.
 UserClient.prototype.getAllUsers = function (callback) {
 
@@ -66388,7 +66364,6 @@ UserClient.prototype.getAllUsers = function (callback) {
 
   return requestFactory(parameters, callback);
 };
-
 
 // Returns the information for the user with the specified username. Dashboard access level required.
 UserClient.prototype.getUserPerUserName = function (userName, callback) {
@@ -66409,7 +66384,6 @@ UserClient.prototype.getUserPerUserName = function (userName, callback) {
 
   return requestFactory(parameters, callback);
 };
-
 
 // Returns all the sensors for all the users.
 UserClient.prototype.getUserSensors = function (callback) {
@@ -66451,12 +66425,10 @@ UserClient.prototype.updateUserDevice = function (userName, deviceId, callback) 
   return requestFactory(parameters, callback);
 };
 
-
 module.exports = UserClient;
 
 },{"../utils/helper":326,"../utils/requestWrapper":327,"./BaseClient":315,"util":288}],325:[function(require,module,exports){
 "use strict";
-
 
 var DeviceClient = require('./clients/DeviceClient');
 var UserClient = require('./clients/UserClient');
@@ -66467,7 +66439,6 @@ var PromotionClient = require('./clients/PromotionClient');
 var RegistrationClient = require('./clients/RegistrationClient');
 var ShieldClient = require('./clients/ShieldClient');
 var ShieldAssociationClient = require('./clients/ShieldAssociationClient');
-
 
 module.exports = {
   IotIDevice: DeviceClient,
@@ -66484,14 +66455,13 @@ module.exports = {
 },{"./clients/DeviceClient":316,"./clients/GlobalClient":317,"./clients/HazardEventClient":318,"./clients/JSCodeClient":319,"./clients/PromotionClient":320,"./clients/RegistrationClient":321,"./clients/ShieldAssociationClient":322,"./clients/ShieldClient":323,"./clients/UserClient":324}],326:[function(require,module,exports){
 "use strict";
 
-module.exports =
-{
+module.exports = {
 
-  isDefined: function(variable) {
-    return ((typeof variable !== 'undefined') && (variable !== null) );
+  isDefined: function isDefined(variable) {
+    return typeof variable !== 'undefined' && variable !== null;
   },
 
-  getMissingParams: function(params, requires) {
+  getMissingParams: function getMissingParams(params, requires) {
 
     var missing;
 
@@ -66502,9 +66472,8 @@ module.exports =
     } else {
       missing = [];
 
-      requires.forEach(function(require) {
-        if (!params[require])
-          missing.push(require);
+      requires.forEach(function (require) {
+        if (!params[require]) missing.push(require);
       });
     }
 
@@ -66514,38 +66483,37 @@ module.exports =
 };
 
 },{}],327:[function(require,module,exports){
+'use strict';
+
 var request = require("request");
 var when = require('when');
 var helper = require('../utils/helper');
 
-
-var getCSRFToken = function (configs) {
+var getCSRFToken = function getCSRFToken(configs) {
   var cookieJar, csrfToken;
 
   cookieJar = request.jar();
 
   return when.promise(function (resolve) {
     request({
-        url: configs.baseUrl + "/user",
-        method: "GET",
-        jar: cookieJar,
-        auth: configs.credentials
-      },
-      function (error, response, body) {
-        var cookies = cookieJar.getCookies(configs.uri);
+      url: configs.baseUrl + "/user",
+      method: "GET",
+      jar: cookieJar,
+      auth: configs.credentials
+    }, function (error, response, body) {
+      var cookies = cookieJar.getCookies(configs.uri);
 
-        for (var i = 0; i < cookies.length; ++i) {
-          if (cookies[i].key == "XSRF-TOKEN") {
-            csrfToken = cookies[i].value;
-          }
+      for (var i = 0; i < cookies.length; ++i) {
+        if (cookies[i].key == "XSRF-TOKEN") {
+          csrfToken = cookies[i].value;
         }
+      }
 
-        resolve({
-          csrfToken: csrfToken,
-          cookieJar: cookieJar
-        });
-
+      resolve({
+        csrfToken: csrfToken,
+        cookieJar: cookieJar
       });
+    });
   });
 };
 
@@ -66566,15 +66534,12 @@ function formatErrorIfExists(callback) {
 
     try {
       body = JSON.parse(body);
-    } catch (e) {
-    }
-
+    } catch (e) {}
 
     if (!error && (response.statusCode < 200 || response.statusCode >= 300)) {
       error = new Error(body);
       error.code = response.statusCode;
-      if (error.code === 401 || error.code === 403)
-        error.body = error.message;
+      if (error.code === 401 || error.code === 403) error.body = error.message;
       error.message = 'Unauthorized: Access is denied due to invalid credentials.';
       body = null;
     }
@@ -66582,14 +66547,12 @@ function formatErrorIfExists(callback) {
   };
 }
 
-
 function createRequest(parameters, callback) {
 
   parameters.options.auth = parameters.configs.credentials;
 
   // Query params
-  if (parameters.options.qs && Object.keys(parameters.options.qs).length > 0)
-    parameters.options.useQuerystring = true;
+  if (parameters.options.qs && Object.keys(parameters.options.qs).length > 0) parameters.options.useQuerystring = true;
 
   if (parameters.withCSRF) {
     getCSRFToken(parameters.configs).then(function (csrf) {

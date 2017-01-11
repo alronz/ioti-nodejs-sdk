@@ -18,7 +18,7 @@ The SDK has the following clients:
 Example below for the IotIUser client:
 
 ```javascript
-var IotIClient = require('ioti-client');
+var IotIClient = require('ibmioti');
 
 // the configuration can be found in the service bluemix dashboard
 var configs =
