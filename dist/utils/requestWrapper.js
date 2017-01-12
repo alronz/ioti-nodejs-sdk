@@ -29,7 +29,7 @@
         jar: cookieJar,
         auth: configs.credentials
       }, function (error, response, body) {
-        var cookies = cookieJar.getCookies(configs.uri);
+        var cookies = cookieJar.getCookies(configs.baseUrl);
 
         for (var i = 0; i < cookies.length; ++i) {
           if (cookies[i].key == "XSRF-TOKEN") {
@@ -65,10 +65,11 @@
       } catch (e) {}
 
       if (!error && (response.statusCode < 200 || response.statusCode >= 300)) {
-        error = new Error(body);
+        error = body;
         error.code = response.statusCode;
-        if (error.code === 401 || error.code === 403) error.body = error.message;
-        error.message = 'Unauthorized: Access is denied due to invalid credentials.';
+        if (error.code === 401 || error.code === 403) {
+          error.message = 'Unauthorized: Access is denied due to invalid credentials.';
+        }
         body = null;
       }
       callback(error, body, response);
