@@ -16,7 +16,7 @@ var getCSRFToken = function (configs) {
         auth: configs.credentials
       },
       function (error, response, body) {
-        var cookies = cookieJar.getCookies(configs.uri);
+        var cookies = cookieJar.getCookies(configs.baseUrl);
 
         for (var i = 0; i < cookies.length; ++i) {
           if (cookies[i].key == "XSRF-TOKEN") {
