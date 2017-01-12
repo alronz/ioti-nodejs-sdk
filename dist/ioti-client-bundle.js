@@ -66537,7 +66537,8 @@ function formatErrorIfExists(callback) {
     } catch (e) {}
 
     if (!error && (response.statusCode < 200 || response.statusCode >= 300)) {
-      error = body;
+      var error = {};
+      error.message = body.message ? body.message : body;
       error.code = response.statusCode;
       if (error.code === 401 || error.code === 403) {
         error.message = 'Unauthorized: Access is denied due to invalid credentials.';
