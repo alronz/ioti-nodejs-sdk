@@ -55,11 +55,11 @@ function formatErrorIfExists(callback) {
 
 
     if (!error && (response.statusCode < 200 || response.statusCode >= 300)) {
-      error = new Error(body);
+      error = body;
       error.code = response.statusCode;
-      if (error.code === 401 || error.code === 403)
-        error.body = error.message;
-      error.message = 'Unauthorized: Access is denied due to invalid credentials.';
+      if (error.code === 401 || error.code === 403) {
+        error.message = 'Unauthorized: Access is denied due to invalid credentials.';
+      }
       body = null;
     }
     callback(error, body, response);
