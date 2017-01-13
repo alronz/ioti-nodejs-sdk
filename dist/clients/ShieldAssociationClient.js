@@ -197,7 +197,7 @@
 
     var parameters = {
       options: {
-        url: this.baseUrl + '/shieldassociation/byUser/' + username,
+        url: this.baseUrl + '/shieldassociation/byuser/' + username,
         method: 'GET',
         json: true
       },
