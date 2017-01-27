@@ -76,17 +76,30 @@ function createRequest(parameters, callback) {
   if (parameters.options.qs && Object.keys(parameters.options.qs).length > 0)
     parameters.options.useQuerystring = true;
 
-  if (parameters.withCSRF) {
-    getCSRFToken(parameters.configs).then(function (csrf) {
-      parameters.options.jar = csrf.cookieJar;
-      parameters.options.headers = {};
-      parameters.options.headers['X-CSRF-Token'] = csrf.csrfToken;
+  return new Promise(function (resolve, fail) {
 
+    if (!callback) {
+      callback = function (err, data) {
+        if (err) {
+          fail(err);
+        } else {
+          resolve(data);
+        }
+      }
+    }
+
+    if (parameters.withCSRF) {
+      getCSRFToken(parameters.configs).then(function (csrf) {
+        parameters.options.jar = csrf.cookieJar;
+        parameters.options.headers = {};
+        parameters.options.headers['X-CSRF-Token'] = csrf.csrfToken;
+
+        request(parameters.options, formatErrorIfExists(callback));
+      });
+    } else {
       request(parameters.options, formatErrorIfExists(callback));
-    });
-  } else {
-    request(parameters.options, formatErrorIfExists(callback));
-  }
+    }
+  });
 }
 
 module.exports = createRequest;
