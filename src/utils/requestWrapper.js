@@ -78,15 +78,14 @@ function createRequest(parameters, callback) {
 
   return new Promise(function (resolve, fail) {
 
-    if (!callback) {
-      callback = function (err, data) {
-        if (err) {
-          fail(err);
-        } else {
-          resolve(data);
-        }
+    var promiseCallback = function (err, data) {
+      if (err) {
+        fail(err);
+      } else {
+        resolve(data);
       }
-    }
+      callback && callback(...arguments);
+    };
 
     if (parameters.withCSRF) {
       getCSRFToken(parameters.configs).then(function (csrf) {
@@ -94,10 +93,10 @@ function createRequest(parameters, callback) {
         parameters.options.headers = {};
         parameters.options.headers['X-CSRF-Token'] = csrf.csrfToken;
 
-        request(parameters.options, formatErrorIfExists(callback));
+        request(parameters.options, formatErrorIfExists(promiseCallback));
       });
     } else {
-      request(parameters.options, formatErrorIfExists(callback));
+      request(parameters.options, formatErrorIfExists(promiseCallback));
     }
   });
 }
