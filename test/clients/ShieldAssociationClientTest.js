@@ -32,7 +32,7 @@ describe('ShieldAssociation Client', function() {
     .reply(200, {"data": "value"});
 
     nock(baseUrl)
-    .get('/shieldassociation/byUser/' + "testUserName")
+    .get('/shieldassociation/byuser/' + "testUserName")
     .reply(200, {"data": "value"});
 
     nock(baseUrl)
