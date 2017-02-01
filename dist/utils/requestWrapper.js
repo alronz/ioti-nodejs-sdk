@@ -84,17 +84,29 @@
     // Query params
     if (parameters.options.qs && Object.keys(parameters.options.qs).length > 0) parameters.options.useQuerystring = true;
 
-    if (parameters.withCSRF) {
-      getCSRFToken(parameters.configs).then(function (csrf) {
-        parameters.options.jar = csrf.cookieJar;
-        parameters.options.headers = {};
-        parameters.options.headers['X-CSRF-Token'] = csrf.csrfToken;
+    return new Promise(function (resolve, fail) {
 
-        request(parameters.options, formatErrorIfExists(callback));
-      });
-    } else {
-      request(parameters.options, formatErrorIfExists(callback));
-    }
+      var promiseCallback = function promiseCallback(err, data) {
+        if (err) {
+          fail(err);
+        } else {
+          resolve(data);
+        }
+        callback && callback.apply(undefined, arguments);
+      };
+
+      if (parameters.withCSRF) {
+        getCSRFToken(parameters.configs).then(function (csrf) {
+          parameters.options.jar = csrf.cookieJar;
+          parameters.options.headers = {};
+          parameters.options.headers['X-CSRF-Token'] = csrf.csrfToken;
+
+          request(parameters.options, formatErrorIfExists(promiseCallback));
+        });
+      } else {
+        request(parameters.options, formatErrorIfExists(promiseCallback));
+      }
+    });
   }
 
   module.exports = createRequest;
